@@ -1,0 +1,147 @@
+#  ██████╗  ██████╗  ██████╗ 
+# ██╔════╝ ██╔════╝ ██╔════╝ 
+# ███████╗ ███████╗ ███████╗ 
+# ██╔═══██╗██╔═══██╗██╔═══██╗
+# ╚██████╔╝╚██████╔╝╚██████╔╝
+#  ╚═════╝  ╚═════╝  ╚═════╝ 
+# 名称: Stash666 V1.4
+# 日期: 2024年11月29日
+# 地址: https://github.com/666OS
+# 频道: https://t.me/Pinched666
+
+proxy-providers:
+  服务提供商-1:
+    url: 机场订阅地址1
+    interval: 86400
+    benchmark-timeout: 300
+    benchmark-url: http://connectivitycheck.platform.hicloud.com/generate_204
+    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
+  服务提供商-2:
+    url: 机场订阅地址2
+    interval: 86400
+    benchmark-timeout: 300
+    benchmark-url: http://connectivitycheck.platform.hicloud.com/generate_204
+    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
+
+# 通用设置
+mode: rule
+log-level: info
+
+# DNS 模块
+dns:
+  # 默认 DNS 服务器
+  default-nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+    - system
+  # 主要 DNS 服务器  
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  # DNS 策略 
+  nameserver-policy:
+    '+.googlevideo.com': https://dns64.dns.google/dns-query
+  # 不映射为 Fake-IP
+  fake-ip-filter:
+    - +.lan
+    - +.local
+    - time.*.com
+    - ntp.*.com
+    - +.googlevideo.com
+    
+# 代理节点
+proxies:
+  - {name: 直连, type: direct, udp: true}
+
+# 代理策略
+proxy-groups:
+  - {name: 一键连, icon: 'https://ghp.ci/https://raw.githubusercontent.com/666OS/YYDS/main/mihomo/image/mihomo.png', type: select, proxies: [故障转移, 香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动, 直连]}
+  - {name: 故障转移, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ULB.png', type: select, proxies: [香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动, 直连]}
+  - {name: 抖快书定位, icon: 'https://ghp.ci/https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/quanqiu(3).png', type: select, proxies: [直连, 一键连, 故障转移, 香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动]}
+  - {name: Speedtest, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Speedtest.png', type: select, include-all: true}
+  - {name: AI平台, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png', type: select, proxies: [新加坡自动, 一键连, 故障转移, 香港自动, 美国自动, 日本自动, 台湾自动]}
+  - {name: 电报消息, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram_X.png', type: select, proxies: [一键连, 故障转移, 香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动]}
+  - {name: 推特消息, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/X.png', type: select, proxies: [一键连, 故障转移, 香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动]}
+  - {name: 游戏平台, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png', type: select, proxies: [一键连, 故障转移, 香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动, 直连]}
+  - {name: Spotify, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png', type: select, proxies: [一键连, 故障转移, 香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动]}
+  - {name: 国际媒体, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png', type: select, proxies: [一键连, 故障转移, 香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动]}
+  - {name: 微软服务, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png', type: select, proxies: [一键连, 故障转移, 香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动]}
+  - {name: 谷歌服务, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png', type: select, proxies: [一键连, 故障转移, 香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动]}
+  - {name: 苹果服务, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png', type: select, proxies: [直连, 一键连, 故障转移, 香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动]}
+  - {name: 国外网站, icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png', type: select, proxies: [一键连, 故障转移, 香港自动, 新加坡自动, 日本自动, 美国自动, 韩国自动, 台湾自动]}
+  - {name: 漏网之鱼, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png', type: select, proxies: [一键连, 直连]}
+  # 地区
+  - {name: 香港自动, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png', type: url-test, interval: 300, include-all: true, filter: "(?i)港|香港|🇭🇰|HK|Hong|HKG"}
+  - {name: 新加坡自动, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png', type: url-test, interval: 300, include-all: true, filter: "(?i)坡|新加坡|🇸🇬|SG|Sing|SIN|XSP"}
+  - {name: 日本自动, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png', type: url-test, interval: 300, include-all: true, filter: "(?i)日|日本|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK"}
+  - {name: 韩国自动, icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png', type: url-test, interval: 300, include-all: true, filter: "(?i)韩|韩国|🇰🇷|韓|韓國|首尔|南朝鲜|KR|KOR|Korea|South"}
+  - {name: 美国自动, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png', type: url-test, interval: 300, include-all: true, filter: "(?i)美|美国|🇺🇸|US|USA|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD"}
+  - {name: 台湾自动, icon: 'https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png', type: url-test, interval: 300, include-all: true, filter: "(?i)台|台湾|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH"}
+
+# 远程规则集
+rule-providers: 
+  telegram:
+    behavior: domain
+    format: text
+    interval: 86400
+    url: https://ghp.ci/https://github.com/666OS/YYDS/raw/main/mihomo/rules/telegram.list
+  telegram_ip:
+    behavior: ipcidr
+    format: text
+    interval: 86400
+    url: https://ghp.ci/https://github.com/666OS/YYDS/raw/main/mihomo/rules/telegram_ip.list
+
+# 路由
+rules:
+  # quic
+  - SCRIPT,googlevideo-quic,DIRECT
+  - SCRIPT,udp-cn,DIRECT
+  - SCRIPT,quic,REJECT,no-track
+  # 常用必备
+  - DST-PORT,123,DIRECT
+  - IP-CIDR,95.161.76.100/31,REJECT,no-resolve
+  # 抖音修改IP
+  - DOMAIN-SUFFIX,amemv.com,抖快书定位
+  - DOMAIN-SUFFIX,douyinvod.com,抖快书定位
+  # 快手修改IP
+  - DOMAIN-SUFFIX,gifshow.com,抖快书定位
+  - DOMAIN-SUFFIX,apissl.ksapisrv.com,抖快书定位
+  # 小红书修改IP
+  - DOMAIN-SUFFIX,edith.xiaohongshu.com,抖快书定位
+  # PerplexityAI
+  - DOMAIN-SUFFIX,pplx.ai,AI平台
+  - DOMAIN-SUFFIX,perplexity.com,AI平台
+  - DOMAIN-SUFFIX,perplexity.ai,AI平台
+  # GEOSITE
+  - GEOSITE,openai,AI平台
+  - GEOSITE,category-ai-chat-!cn,AI平台
+  - GEOSITE,speedtest,Speedtest
+  - GEOSITE,category-games,游戏平台
+  - GEOSITE,tiktok,国际媒体
+  - GEOSITE,netflix,国际媒体
+  - GEOSITE,hbo,国际媒体
+  - GEOSITE,disney,国际媒体
+  - GEOSITE,primevideo,国际媒体
+  - GEOSITE,youtube,国际媒体
+  - GEOSITE,github,微软服务
+  - RULE-SET,telegram,电报消息
+  - GEOSITE,twitter,推特消息
+  - GEOSITE,apple,苹果服务
+  - GEOSITE,microsoft,微软服务
+  - GEOSITE,google,谷歌服务
+  - GEOSITE,Spotify,Spotify
+  - GEOSITE,geolocation-!cn,国外网站
+  - GEOSITE,cn,DIRECT
+  # GEOIP
+  - GEOIP,netflix,国际媒体
+  - GEOIP,google,谷歌服务
+  - RULE-SET,telegram_ip,推特消息,no-resolve
+  - GEOIP,lan,DIRECT
+  - GEOIP,CN,DIRECT
+
+# 脚本
+script:
+  shortcuts:
+    googlevideo-quic: network == 'udp' and dst_port == 443 and (host.endswith('googlevideo.com') or host == 'googlevideo.com')
+    udp-cn: network == 'udp' and geoip(dst_ip if dst_ip != '' else resolve_ip(host)) == 'CN'
+    quic: network == 'udp' and dst_port == 443
