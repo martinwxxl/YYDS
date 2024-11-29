@@ -135,7 +135,7 @@ rules:
   # GEOIP
   - GEOIP,netflix,国际媒体
   - GEOIP,google,谷歌服务
-  - RULE-SET,telegram_ip,推特消息,no-resolve
+  - RULE-SET,telegram_ip,电报消息,no-resolve
   - GEOIP,lan,DIRECT
   - GEOIP,CN,DIRECT
 
